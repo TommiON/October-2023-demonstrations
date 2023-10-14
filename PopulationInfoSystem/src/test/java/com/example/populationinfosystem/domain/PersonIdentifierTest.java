@@ -7,65 +7,58 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PersonIdentifierTest {
 
-    PersonIdentifier dummy;
-
-    @BeforeEach
-    public void init() {
-        this.dummy = new PersonIdentifier();
-    }
-
     @Test
     public void valids() {
-        String valid = "170303-4987";
-        assertTrue(dummy.set(valid));
-        assertNotNull(dummy.get());
+        PersonIdentifier id1 = new PersonIdentifier("170303-4987");
+        assertNotNull(id1);
+        assertEquals("170303-4987", id1.get());
 
-        String valid2 = "070885-368S";
-        assertTrue(dummy.set(valid2));
-        assertNotNull(dummy.get());
+        PersonIdentifier id2 = new PersonIdentifier("070885-368S");
+        assertNotNull(id2);
+        assertEquals("070885-368S", id2.get());
     }
 
     @Test
     public void tooShort() {
         String tooShort = "170303-498";
-        assertFalse(dummy.set(tooShort));
-        assertNull(dummy.get());
+        Exception e = assertThrows(IllegalArgumentException.class, () -> { new PersonIdentifier(tooShort); });
+        assertTrue(e.getMessage().contains("Henkilötunnus ei ole validi"));
     }
 
     @Test
     public void tooLong() {
         String tooLong = "170303-49891";
-        assertFalse(dummy.set(tooLong));
-        assertNull(dummy.get());
+        Exception e = assertThrows(IllegalArgumentException.class, () -> { new PersonIdentifier(tooLong); });
+        assertTrue(e.getMessage().contains("Henkilötunnus ei ole validi"));
     }
 
     @Test
     public void wrongMiddlePart() {
         String wrongInTheMiddle = "170303X4987";
-        assertFalse(dummy.set(wrongInTheMiddle));
-        assertNull(dummy.get());
+        Exception e = assertThrows(IllegalArgumentException.class, () -> { new PersonIdentifier(wrongInTheMiddle); });
+        assertTrue(e.getMessage().contains("Henkilötunnus ei ole validi"));
     }
 
     @Test
     public void nonDigitsInWrongPlaces() {
         String wrongInTheBeginning = "1A0303-4987";
-        assertFalse(dummy.set(wrongInTheBeginning));
-        assertNull(dummy.get());
+        Exception e1 = assertThrows(IllegalArgumentException.class, () -> { new PersonIdentifier(wrongInTheBeginning); });
+        assertTrue(e1.getMessage().contains("Henkilötunnus ei ole validi"));
 
         String wrongInTheEnd = "170303-A987";
-        assertFalse(dummy.set(wrongInTheEnd));
-        assertNull(dummy.get());
+        Exception e2 = assertThrows(IllegalArgumentException.class, () -> { new PersonIdentifier(wrongInTheEnd); });
+        assertTrue(e2.getMessage().contains("Henkilötunnus ei ole validi"));
     }
 
     @Test
     public void checkCharDoesNotMatch() {
         String xxx = "170303-4988";
-        assertFalse(dummy.set(xxx));
-        assertNull(dummy.get());
+        Exception e1 = assertThrows(IllegalArgumentException.class, () -> { new PersonIdentifier(xxx); });
+        assertTrue(e1.getMessage().contains("Henkilötunnus ei ole validi"));
 
         String yyy = "070885-368K";
-        assertFalse(dummy.set(yyy));
-        assertNull(dummy.get());
+        Exception e2 = assertThrows(IllegalArgumentException.class, () -> { new PersonIdentifier(yyy); });
+        assertTrue(e2.getMessage().contains("Henkilötunnus ei ole validi"));
     }
 
 }

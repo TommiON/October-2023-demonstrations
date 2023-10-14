@@ -6,6 +6,14 @@ public class PersonIdentifier {
 
     private String identifier;
 
+    public PersonIdentifier(String candidate) throws IllegalArgumentException {
+        if (isValid(candidate)) {
+            this.identifier = candidate;
+        } else {
+            throw new IllegalArgumentException("Henkilötunnus ei ole validi");
+        }
+    }
+
     public String get() {
         return this.identifier;
     }
