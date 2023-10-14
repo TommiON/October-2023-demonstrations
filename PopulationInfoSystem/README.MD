@@ -1,0 +1,3 @@
+Ainoa varsinainen bisneslogiikka jota tehtävänannon laajuudessa tulee mieleen on datan validointi. Domain-luokissa onkin suurimmalta osin keskitytty siihen. 
+- Henkilötunnus on muuttumaton (todellisuudessa se kai joissain harvinaisissa tapauksissa voidaan muuttaa turvallisuusyistä)
+- Koska kaikki tietokantatoiminnallisuus puuttuu, Personilla ei ole lainkaan id:tä. Todellisuudessa haluttaisiin varmasti järjestelmän sisäiseen käyttöön id (eri asia kuin henkilötunnus)

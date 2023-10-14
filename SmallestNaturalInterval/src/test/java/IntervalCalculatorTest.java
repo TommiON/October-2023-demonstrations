@@ -12,6 +12,8 @@ class IntervalCalculatorTest {
         assertEquals(1, IntervalCalculator.shortestNaturalInterval(numbers2));
         int[] numbers3 = {1,10,100,105};
         assertEquals(4, IntervalCalculator.shortestNaturalInterval(numbers3));
+        int[] numbers4 = {1,4,1,5,1,4,1,7};
+        assertEquals(2, IntervalCalculator.shortestNaturalInterval(numbers4));
     }
 
     @Test
@@ -43,7 +45,9 @@ class IntervalCalculatorTest {
     @Test
     public void maxIntegerValues() {
         int[] numbers = {0, Integer.MAX_VALUE, 1, Integer.MAX_VALUE};
-        assertEquals(Integer.MAX_VALUE-2, IntervalCalculator.shortestNaturalInterval(numbers));
+        assertEquals(Integer.MAX_VALUE -2, IntervalCalculator.shortestNaturalInterval(numbers));
+        int[] numbers2 = {0, Integer.MAX_VALUE, 0, Integer.MAX_VALUE};
+        assertEquals(Integer.MAX_VALUE -1, IntervalCalculator.shortestNaturalInterval(numbers2));
     }
 
     @Test
