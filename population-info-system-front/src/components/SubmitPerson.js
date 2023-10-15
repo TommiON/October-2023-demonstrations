@@ -16,6 +16,8 @@ const SubmitPerson = () => {
         birthplaceError: ''
     })
 
+    const [notificationVisible, setNotificatiobVisible] = useState(false)
+
     const errorLiterals = {
         identifierError: 'Henkilötunnus ei kelpaa',
         firstnameError: 'Etunimi ei kelpaa',
@@ -38,6 +40,11 @@ const SubmitPerson = () => {
                 lastname: '',
                 birthplace: ''
             })
+
+            setNotificatiobVisible(true)
+            setTimeout(() => {
+                setNotificatiobVisible(false)
+            }, "3000");
         }
     }
 
@@ -86,13 +93,13 @@ const SubmitPerson = () => {
         <div>
             <h2>Lisää uusi henkilö rekisteriin</h2>
             <form onSubmit={handleSubmit}>
-                {errors.identifierError !=='' ? errors.identifierError : <p>Henkilötunnus</p>}
+                {errors.identifierError !=='' ? <p style={{color: 'red'}}>{errors.identifierError}</p> : <p>Henkilötunnus</p>}
                 <input type='text' value={personalData.identifier} onChange={handleChange} name='identifier'/>
                
-                {errors.firstnameError !=='' ? errors.firstnameError : <p>Etunimi</p>}
+                {errors.firstnameError !=='' ? <p style={{color: 'red'}}>{errors.firstnameError}</p> : <p>Etunimi</p>}
                 <input type='text' value={personalData.firstname} onChange={handleChange} name='firstname'/>
                
-                {errors.lastnameError !=='' ? errors.lastnameError : <p>Sukunimi</p>}
+                {errors.lastnameError !=='' ? <p style={{color: 'red'}}>{errors.lastnameError}</p>: <p>Sukunimi</p>}
                 <input type='text' value={personalData.lastname} onChange={handleChange} name='lastname'/>
 
                 <p>Syntymäpaikka</p>
@@ -100,6 +107,8 @@ const SubmitPerson = () => {
 
                 <br/><br/>
                 <button type='submit'>Lisää</button>
+
+                {notificationVisible ? <p style={{color: 'green'}}>Lisätty!</p> : <p></p>}
             </form>
         </div>
     )

@@ -3,8 +3,7 @@ import mockPOST from '../mockBackend/MockBackend'
 
 // tänne tulisi oikeasti HTTP-pyyntöjen generointi Axiosilla/Fetchilla
 const AddNewPerson = (personalData) => {
-    const response = mockPOST(personalData)
-    return response
+    return mockPOST(personalData)
 }
 
 export default AddNewPerson
