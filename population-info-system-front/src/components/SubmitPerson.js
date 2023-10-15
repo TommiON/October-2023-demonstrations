@@ -24,8 +24,6 @@ const SubmitPerson = () => {
         lastnameError: 'Sukunimi ei kelpaa'
     }
 
-    console.log('Tilan virheet: ', errors)
-
     const handleSubmit = (event) => {
         event.preventDefault()
         

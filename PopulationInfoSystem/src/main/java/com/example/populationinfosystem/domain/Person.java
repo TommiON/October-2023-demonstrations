@@ -5,10 +5,12 @@ import lombok.Data;
 import lombok.NonNull;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class Person {
 
+    // pakolliset perustiedot, vaaditaan uutta Personia luotaessa
     @NonNull
     private PersonIdentifier identityNumber;
     @NonNull
@@ -18,9 +20,16 @@ public class Person {
     @NonNull
     private Municipality placeOfBirth;
 
-    private DeathDate dateOfDeath;
+    // ei-pakolliset lisätiedot, asetettaisiin luomisen jälkeen erillisillä settereillä
     private Municipality placeOfResidence;
     private ContactInfo contactInfo;
+    private DeathDate dateOfDeath;
+
+    // sukulaisuussuhteet
+    private Person father;
+    private Person mother;
+    private Person spouse; // jos tarvitaan tieto avioliiton päivämäärästä jne, tämä ei riitä
+    private List<Person> offspring; // ainoastaan viite, syntymäaika ja muut tiedot haetaan tarvittaessa lapsiobjektilta
 
     public Person(String identifier, String firsName, String lastName, String placeOfBirth) throws Exception {
         try {
@@ -42,4 +51,7 @@ public class Person {
             throw new Exception("Henkilön luominen ei onnistu, syntymäpaikka virheellinen");
         }
     }
+
+    // tänne erilaisia metodeita kuolemiseen, yhteystietojen lisäämiseen/päivittämiseen jne.
+
  }

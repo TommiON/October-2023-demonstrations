@@ -9,4 +9,7 @@ public enum Municipality {
     /// ....
     HELSINKI,
     // etc.
+
+    // kaatoluokka Suomen ulkopuolella syntyneille
+    OTHER
 }

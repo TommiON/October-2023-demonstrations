@@ -7,5 +7,6 @@ public class ContactInfo {
     private String email;
     private String telephone;
 
+    // ei toteutettu
 
 }
