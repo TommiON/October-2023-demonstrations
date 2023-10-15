@@ -1,6 +1,7 @@
 package com.example.populationinfosystem.domain;
 
 import com.example.populationinfosystem.utilities.PersonIdentifierCheckCharacter;
+import lombok.NonNull;
 
 public class PersonIdentifier {
 
@@ -14,19 +15,9 @@ public class PersonIdentifier {
         }
     }
 
-    public String get() {
+    @Override
+    public String toString() {
         return this.identifier;
-    }
-
-    // itse asiassa setteri helvettiin ja konstruktori tilalle!
-    public boolean set(String candidate) {
-        // booleanin palauttaminen ei ehkä järkevää, testien rakentamisen vuoksi nyt tällainen ratkaisu
-        if (isValid(candidate)) {
-            this.identifier = candidate;
-            return true;
-        } else {
-            return false;
-        }
     }
 
     private boolean isValid(String candidate) {

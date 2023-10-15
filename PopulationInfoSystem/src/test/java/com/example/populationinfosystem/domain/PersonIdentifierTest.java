@@ -11,11 +11,11 @@ class PersonIdentifierTest {
     public void valids() {
         PersonIdentifier id1 = new PersonIdentifier("170303-4987");
         assertNotNull(id1);
-        assertEquals("170303-4987", id1.get());
+        assertEquals("170303-4987", id1.toString());
 
         PersonIdentifier id2 = new PersonIdentifier("070885-368S");
         assertNotNull(id2);
-        assertEquals("070885-368S", id2.get());
+        assertEquals("070885-368S", id2.toString());
     }
 
     @Test

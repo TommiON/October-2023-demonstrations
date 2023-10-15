@@ -1,10 +1,12 @@
-package com.example.populationinfosystem.domain;
+package com.example.populationinfosystem.utilities;
 
 public enum Municipality {
     AKAA,
     ALAJÄRVI,
     ALAVIESKA,
     ALAVUS,
-    ASIKKALA
+    ASIKKALA,
+    /// ....
+    HELSINKI,
     // etc.
 }
